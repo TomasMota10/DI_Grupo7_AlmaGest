@@ -34,6 +34,33 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest')-> except('logout');
+
+    }
+
+   
+    protected function authenticated(Request $request, $user){
+
+        if ($user->type == 'U'){
+
+            if($user->email_confirmed == 1){
+
+                if($user->actived == 1){
+                    return redirect('/users');
+                }
+                else{
+                    return redirect('/login')->with('message','Espere a que el Administrador active su cuenta');
+                }
+
+            }
+            else{
+                return redirect('/login')->with('message','Confirme su email en el correo');
+            }
+    
+        }
+        else{
+            return redirect('/login')->with('message','Permiso denegado');
+        }
     }
 }
+

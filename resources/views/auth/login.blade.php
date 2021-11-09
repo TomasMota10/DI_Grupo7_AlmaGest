@@ -8,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Log in</title>
+  <title>AdminLTE 2 | Log in AlmaGest</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -58,6 +58,11 @@
               <input type="checkbox"> Recuerdame
             </label>
           </div>
+          @if (Route::has('password.request'))
+              <a class="btn btn-link" href="{{ route('password.request')}}">
+               {{__('He olvidado la contraseña')}} 
+              </a>
+          @endif
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
@@ -68,7 +73,8 @@
     </form>
 
     <!-- /.social-auth-links -->
-    <a href="{{url('/register/form')}}" class="text-center">Registrar a un nuevo miembro</a>
+    <a href="{{url('/register/form')}}" class="btn  btn-block btn-primary">Registrar a un nuevo miembro</a>
+
     
   </div>
   <!-- /.login-box-body -->

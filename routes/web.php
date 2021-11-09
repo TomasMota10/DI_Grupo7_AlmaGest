@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/register/form', 'Auth\RegisterController@index')->name('register');
+Route::put('/register', 'Auth\RegisterController@index')->name('register'); 
+Route::resource('/usuarios', 'UserController');
